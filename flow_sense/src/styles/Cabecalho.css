@@ -1,0 +1,24 @@
+.cabecalho {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: blue;
+}
+
+.cabecalho ul {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-between;
+    min-width: 30rem;
+    background-color: aqua;
+}
+
+.cabecalho span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
