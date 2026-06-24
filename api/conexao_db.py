@@ -1,31 +1,42 @@
 import dotenv
 import os
-import psycopg2
+import pymysql
 
 dotenv.load_dotenv()
 
-ENDERECO=os.getenv("ENDERECO")
-PORTA=os.getenv("PORTA")
-DATABASE=os.getenv("DATABASE")
-USUARIO=os.getenv("USUARIO")
-SENHA=os.getenv("SENHA")
+ENDERECO = os.getenv("ENDERECO")
+PORTA = int(os.getenv("PORTA"))
+DATABASE = os.getenv("DATABASE")
+USUARIO = os.getenv("USUARIO")
+SENHA = os.getenv("SENHA")
 
-def executa_query_db(query):
+
+def executa_query_db(query, params=None):
+    connection = None
+    cursor = None
+
     try:
-        connection = psycopg2.connect(
+        connection = pymysql.connect(
             host=ENDERECO,
             port=PORTA,
             database=DATABASE,
             user=USUARIO,
             password=SENHA
         )
+
         cursor = connection.cursor()
-        cursor.execute(query)
-        resultados = cursor.fetchall()
-        return resultados
+        cursor.execute(query, params)
+
+        if query.strip().upper().startswith("SELECT"):
+            return cursor.fetchall()
+
+        connection.commit()
+        return cursor.rowcount
+
     except Exception as e:
-        print(f"Erro ao conectar ao banco de dados: {e}")
-        return []
+        print(f"Erro ao executar query no banco: {e}")
+        raise e
+
     finally:
         if cursor:
             cursor.close()

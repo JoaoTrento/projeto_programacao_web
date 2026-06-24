@@ -1,10 +1,21 @@
 from conexao_db import executa_query_db
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from datetime import datetime
 #uvicorn main:app --reload
 
 app = FastAPI()
 
-@app.get("medicao_recente")
+class MedicaoInput(BaseModel):
+    id_maquina: int
+    corrente: float
+    tensao: float
+
+class MedicaoUpdate(BaseModel):
+    corrente: float
+    tensao: float
+
+@app.get("/medicao_recente")
 def medicao_recente():
     query = "SELECT * FROM vw_medicoes_completas ORDER BY data_hora DESC LIMIT 1"
     resposta = executa_query_db(query)
@@ -21,3 +32,31 @@ def medicao_recente():
         }
         for r in resposta
     ]
+
+@app.post("/medicao")
+def cria_medicao(medicao: MedicaoInput):
+    query = """
+        INSERT INTO medicoes (id_maquina, corrente, tensao, data_hora)
+        VALUES (%s, %s, %s, %s)
+    """
+    params = (medicao.id_maquina, medicao.corrente, medicao.tensao, datetime.now())
+    executa_query_db(query, params)
+    return {"mensagem": "Medicao registrada com sucesso"}
+
+@app.put("/medicao/{id}")
+def atualiza_medicao(id: int, medicao: MedicaoUpdate):
+    query = """
+        UPDATE medicoes
+        SET corrente = %s,
+            tensao = %s
+        WHERE id = %s
+    """
+
+    params = (medicao.corrente, medicao.tensao, id)
+
+    linhas_afetadas = executa_query_db(query, params)
+
+    if linhas_afetadas == 0:
+        raise HTTPException(status_code=404, detail="Medição não encontrada")
+
+    return {"mensagem": "Medição atualizada com sucesso"}
