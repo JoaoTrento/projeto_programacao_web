@@ -60,3 +60,36 @@ def atualiza_medicao(id: int, medicao: MedicaoUpdate):
         raise HTTPException(status_code=404, detail="Medição não encontrada")
 
     return {"mensagem": "Medição atualizada com sucesso"}
+
+@app.out("/deletahist")
+def deleta_historico (id: int):
+    query = "DELETE FROM medicoes WHERE id=%s"
+    params = (id,)
+
+    linhas_afetadas = executa_query_db(query, params)
+
+    if linhas_afetadas == 0:
+        raise HTTPException(status_code=404, detail="Registro não encontrado")
+
+    return {"mensagem": "Deletado com sucesso"}
+
+@app.get("/medicoeshistorico")
+def listar_historico():
+    query = """
+        SELECT id, corrente, tensao, data_hora
+        FROM medicoes
+        ORDER BY data_hora DESC
+    """
+
+    resultado = executa_query_db(query)
+
+    return [
+        {
+            "id": r[0],
+            "corrente": r[1],
+            "tensao": r[2],
+            "data_hora": r[3]
+        }
+        for r in resultado
+    ]
+

@@ -16,7 +16,7 @@ def executa_query_db(query, params=None):
     cursor = None
 
     try:
-        connection = pymysql.connect(
+        connection = psycopg2.connect(
             host=ENDERECO,
             port=PORTA,
             database=DATABASE,
