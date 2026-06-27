@@ -1,10 +1,22 @@
 from conexao_db import executa_query_db
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
 #uvicorn main:app --reload
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class MedicaoInput(BaseModel):
     id_maquina: int
@@ -17,7 +29,12 @@ class MedicaoUpdate(BaseModel):
 
 @app.get("/medicao_recente")
 def medicao_recente():
-    query = "SELECT * FROM vw_medicoes_completas ORDER BY data_hora DESC LIMIT 1"
+    query = """
+        SELECT id_medicao, nome_maquina, setor, nome_operador, nome_empresa, corrente, tensao, data_hora 
+        FROM vw_medicoes_completas 
+        ORDER BY data_hora 
+        DESC LIMIT 1
+    """
     resposta = executa_query_db(query)
     return [
         {
@@ -61,7 +78,7 @@ def atualiza_medicao(id: int, medicao: MedicaoUpdate):
 
     return {"mensagem": "Medição atualizada com sucesso"}
 
-@app.out("/deletahist")
+@app.delete("/deletahist")
 def deleta_historico (id: int):
     query = "DELETE FROM medicoes WHERE id=%s"
     params = (id,)

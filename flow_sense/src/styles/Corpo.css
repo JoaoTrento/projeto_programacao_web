@@ -4,14 +4,5 @@
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-.corpo .visor {
-    width: 35%;
-    height: 20rem;
-    background-color: brown;
-}
-
-.corpo .teste {
-    width: 50%;
+    height: 100%;
 }

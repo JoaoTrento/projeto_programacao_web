@@ -8,10 +8,10 @@ import Corpo from './Corpo'
 function App() {
 
   return (
-    <>
-    <Cabecalho />
-    <Corpo />
-    </>
+    <main>
+      <Cabecalho />
+      <Corpo />
+    </main>
   )
 }
 

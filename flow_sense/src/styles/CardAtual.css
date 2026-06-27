@@ -1,0 +1,36 @@
+.card_atual {
+    height: 20rem;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(65, 65, 65);
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+
+        h2{
+            margin-left: 10px;
+        }
+    }
+
+    span {
+        margin-top: 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    span p:nth-child(2) {
+        font-size: 23px;
+        font-weight: bold;
+    }
+}

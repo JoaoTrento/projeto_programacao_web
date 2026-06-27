@@ -1,8 +1,9 @@
+import CardAtual from "./CardAtual"
+
 export default function Corpo() {
     return(
-        <body className="corpo">
-            <section className="visor"></section>
-            <section className="teste"></section>
-        </body>
+        <div className="corpo">
+            <CardAtual></CardAtual>
+        </div>
     )
 }
