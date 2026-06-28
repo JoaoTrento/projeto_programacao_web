@@ -22,7 +22,7 @@ export default function CardAtual() {
         <div className="card_atual">
             <header>
                 <img src={electric_bolt} alt="" />
-                <h2>STATUS ATUAL - Carregando...</h2>
+                <h2>STATUS ATUAL ...</h2>
             </header>
             <span>
                 <p>Tensão</p>
@@ -60,7 +60,7 @@ export default function CardAtual() {
             </span>
             <span>
                 <p>Potência</p>
-                <p>{Number(medicao.tensao) * Number(medicao.corrente)} W</p>
+                <p>{(Number(medicao.tensao) * Number(medicao.corrente)).toFixed(1)} W</p>
             </span>
             <span>
                 <p>Status</p>

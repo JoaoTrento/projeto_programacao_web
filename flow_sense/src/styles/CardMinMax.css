@@ -1,0 +1,45 @@
+.card_minmax {
+    height: 20rem;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(65, 65, 65);
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+
+        h2{
+            margin-left: 10px;
+        }
+    }
+
+    span {
+        margin-top: 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    span:first-of-type {
+        justify-content: end;
+
+        p {
+            margin-right: 50px;
+            color: rgb(44, 44, 44);
+        }
+    }
+
+    span:not(:first-of-type) {
+        font-size: 20px;
+
+        p:not(:first-of-type) {
+            font-size: 23px;
+            font-weight: bold;
+        }
+    }
+}

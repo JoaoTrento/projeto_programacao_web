@@ -30,7 +30,15 @@ class MedicaoUpdate(BaseModel):
 @app.get("/medicao_recente")
 def medicao_recente():
     query = """
-        SELECT id_medicao, nome_maquina, setor, nome_operador, nome_empresa, corrente, tensao, data_hora 
+        SELECT 
+            id_medicao, 
+            nome_maquina, 
+            setor, 
+            nome_operador, 
+            nome_empresa, 
+            corrente, 
+            tensao, 
+            data_hora 
         FROM vw_medicoes_completas 
         ORDER BY data_hora 
         DESC LIMIT 1
@@ -46,6 +54,31 @@ def medicao_recente():
             "corrente": r[5],
             "tensao": r[6],
             "data_hora": r[7],
+        }
+        for r in resposta
+    ]
+
+@app.get("/min_max")
+def minimo_maximo():
+    query = """
+        SELECT 
+            MIN(tensao) AS tensao_min, 
+            MAX(tensao) AS tensao_max, 
+            MIN(corrente) AS corrente_min, 
+            MAX(corrente) AS corrente_max, 
+            MIN((tensao * corrente)) AS potencia_min, 
+            MAX((tensao * corrente)) AS potencia_max
+        FROM vw_medicoes_completas; 
+    """
+    resposta = executa_query_db(query)
+    return [
+        {
+            "tensao_min": r[0],
+            "tensao_max": r[1],
+            "corrente_min": r[2],
+            "corrente_max": r[3],
+            "potencia_min": r[4],
+            "potencia_max": r[5],
         }
         for r in resposta
     ]
