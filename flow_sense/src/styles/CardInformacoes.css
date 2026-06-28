@@ -1,4 +1,4 @@
-.card_minmax {
+.card_informacoes {
     height: 20rem;
     width: 30%;
     align-items: center;
@@ -19,27 +19,18 @@
     }
 
     span {
-        margin-top: 35px;
+        margin-top: 25px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    span:first-of-type {
-        justify-content: end;
-
-        p {
-            margin-right: 50px;
-            color: rgb(44, 44, 44);
-        }
+    p {
+        font-size: 20px;
     }
 
-    span:not(:first-of-type) {
-        font-size: 20px;
-
-        p:not(:first-of-type) {
-            font-size: 23px;
-            font-weight: bold;
-        }
+    span p:nth-child(2) {
+        font-size: 23px;
+        font-weight: bold;
     }
 }
