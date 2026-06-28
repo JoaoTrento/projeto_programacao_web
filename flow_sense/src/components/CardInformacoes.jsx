@@ -15,7 +15,35 @@ export default function CardInformacoes() {
     }, [])
 
     if (!informacoes) {
-        return <h1>A</h1>
+        return (
+
+            <div className="card_informacoes">
+                <header>
+                    <img src={information} alt="" />
+                    <h2>OUTRAS INFORMAÇÕES ...</h2>
+                </header>
+                <span>
+                    <p>Atualização</p>
+                    <p>...</p>
+                </span>
+                <span>
+                    <p>Maquina</p>
+                    <p>...</p>
+                </span>
+                <span>
+                    <p>Setor</p>
+                    <p>...</p>
+                </span>
+                <span>
+                    <p>Empresa</p>
+                    <p>...</p>
+                </span>
+                <span>
+                    <p>Operador</p>
+                    <p>...</p>
+                </span>
+            </div>
+        )
     }
 
     return (

@@ -1,3 +1,4 @@
+import '../styles/Cabecalho.css'
 import logo from "../assets/logo_flow_sense.svg"
 import riscos from "../assets/tres_riscos.svg"
 
