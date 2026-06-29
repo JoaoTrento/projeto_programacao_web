@@ -111,23 +111,16 @@ def atualiza_medicao(id: int, medicao: MedicaoUpdate):
 
     return {"mensagem": "Medição atualizada com sucesso"}
 
-@app.delete("/deletahist")
-def deleta_historico (id: int):
-    query = "DELETE FROM medicoes WHERE id=%s"
-    params = (id,)
-
-    linhas_afetadas = executa_query_db(query, params)
-
-    if linhas_afetadas == 0:
-        raise HTTPException(status_code=404, detail="Registro não encontrado")
-
-    return {"mensagem": "Deletado com sucesso"}
-
-@app.get("/medicoeshistorico")
-def listar_historico():
+@app.get("/lista_medicoes")
+def lista_medicoes():
     query = """
-        SELECT id, corrente, tensao, data_hora
-        FROM medicoes
+        SELECT
+            id_medicao,
+            corrente,
+            tensao,
+            (tensao * corrente) AS potencia,
+            data_hora
+        FROM vw_medicoes_completas
         ORDER BY data_hora DESC
     """
 
@@ -138,8 +131,25 @@ def listar_historico():
             "id": r[0],
             "corrente": r[1],
             "tensao": r[2],
-            "data_hora": r[3]
+            "potencia": r[3],
+            "data_hora": r[4]
         }
         for r in resultado
     ]
+
+@app.delete("/deletahist/{id}")
+def deleta_historico(id: int):
+    query = """
+        DELETE FROM medicoes
+        WHERE id = %s
+    """
+
+    params = (id,)
+
+    linhas_afetadas = executa_query_db(query, params)
+
+    if linhas_afetadas == 0:
+        raise HTTPException(status_code=404, detail="Registro não encontrado")
+
+    return {"mensagem": "Deletado com sucesso"}
 
