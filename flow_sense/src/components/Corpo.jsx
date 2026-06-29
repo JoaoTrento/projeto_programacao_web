@@ -7,6 +7,7 @@ import check_circle from "../assets/check_circle.svg"
 import warning from "../assets/warning.svg"
 import timer from "../assets/timer.svg"
 import timeline from "../assets/timeline.svg"
+import CardHistorico from './CardHistorico'
 
 export default function Corpo() {
     return(
@@ -30,6 +31,11 @@ export default function Corpo() {
                         cor="rgba(247, 0, 255, 0.52)" cor_texto="rgb(88, 7, 104)"/>
                     <Indicador imagem={timeline} valor="8" nome_indicador="Medições"
                         cor="rgba(18, 0, 177, 0.33)" cor_texto="rgb(10, 0, 143)"/>
+                </span>
+            </section>
+            <section>
+                <span>
+                    <CardHistorico/>
                 </span>
             </section>
         </div>

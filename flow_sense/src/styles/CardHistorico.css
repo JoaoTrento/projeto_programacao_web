@@ -1,0 +1,89 @@
+.card_historico {
+    width: calc(100% - 20px);
+    margin: 20px 10px;
+    padding: 15px;
+    border: 2px solid rgb(65, 65, 65);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.card_historico h2 {
+    margin: 0 0 15px;
+    font-size: 20px;
+}
+
+.card_historico table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.card_historico th,
+.card_historico td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.card_historico th {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: rgb(245, 245, 245);
+}
+
+.card_historico td {
+    font-size: 16px;
+}
+
+.status_historico {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: rgb(1, 128, 29);
+    background-color: rgba(0, 255, 34, 0.2);
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.historico_vazio {
+    color: rgb(100, 100, 100);
+    text-align: center;
+}
+
+.historico_erro {
+    margin: 0 0 12px;
+    color: rgb(190, 40, 40);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.botao_deletar_historico {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(220, 70, 70);
+    border-radius: 6px;
+    background-color: rgb(255, 245, 245);
+    cursor: pointer;
+}
+
+.botao_deletar_historico svg {
+    width: 18px;
+    height: 18px;
+    fill: rgb(190, 40, 40);
+}
+
+.botao_deletar_historico:hover {
+    background-color: rgb(255, 230, 230);
+}
+
+@media (max-width: 768px) {
+    .card_historico {
+        overflow-x: auto;
+    }
+
+    .card_historico table {
+        min-width: 760px;
+    }
+}

@@ -14,6 +14,13 @@ export default function CardAtual() {
         }
 
         buscaMedicaoRecente();
+
+        const intervalo = setInterval(()=> {
+            buscaMedicaoRecente();
+        },5000);
+
+        return () => clearInterval(intervalo);
+
     }, []);
 
     if (!medicao) {
