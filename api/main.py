@@ -89,7 +89,7 @@ def cria_medicao(medicao: MedicaoInput):
         INSERT INTO medicoes (id_maquina, corrente, tensao, data_hora)
         VALUES (%s, %s, %s, %s)
     """
-    params = (medicao.id_maquina, medicao.corrente, medicao.tensao, datetime.now())
+    params = (medicao.id_maquina, medicao.corrente, medicao.tensao, datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     executa_query_db(query, params)
     return {"mensagem": "Medicao registrada com sucesso"}
 

@@ -6,6 +6,7 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
+    margin: 10px;
 
     img {
         width: 2.5rem;

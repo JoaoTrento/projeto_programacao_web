@@ -11,9 +11,9 @@ export default function Cabecalho() {
             </span>
             <ul>
                 <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
+                <li>Cadastros</li>
+                <li>Mapa</li>
+                <li>Prevenção</li>
             </ul>
             <img src={riscos} alt="" />
         </header>

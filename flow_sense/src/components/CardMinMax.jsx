@@ -67,7 +67,7 @@ export default function CardMinMax() {
             <span>
                 <p>Corrente</p>
                 <p>{medicoes.corrente_min} A</p>
-                <p>{medicoes.corrente_min} A</p>
+                <p>{medicoes.corrente_max} A</p>
             </span>
             <span>
                 <p>Potência</p>

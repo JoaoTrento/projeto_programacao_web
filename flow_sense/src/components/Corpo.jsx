@@ -13,7 +13,7 @@ export default function Corpo() {
     return(
         <div className="corpo">
             <section>
-                <h2>Painel de Gestão:</h2>
+                <h2 style={{ fontSize: 20, marginLeft: 25, marginTop: 15 }}>Painel de Gestão:</h2>
                 <span className="cards">
                     <CardAtual/>
                     <CardMinMax/>
@@ -21,7 +21,7 @@ export default function Corpo() {
                 </span>
             </section>
             <section>
-                <h2>Indicadores Rápidos:</h2>
+                <h2 style={{ fontSize: 20, marginLeft: 25, marginTop: 5 }}>Indicadores Rápidos:</h2>
                 <span className="indicadores">
                     <Indicador imagem={check_circle} valor="Normal" nome_indicador="Status"
                         cor="rgba(0, 255, 34, 0.33)" cor_texto="rgb(1, 128, 29)"/>
