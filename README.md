@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/assets/logo_flow_sense.svg" alt="Flow Sense Monitor" width="280">
+  <img src="logo_flow_sense.svg" alt="Flow Sense Monitor" width="280">
 </p>
 
 # Flow Sense Monitor
