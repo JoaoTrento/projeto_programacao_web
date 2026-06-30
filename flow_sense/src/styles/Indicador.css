@@ -1,31 +1,55 @@
 .card_indicador {
-    height: 6rem;
-    width: 14rem;
+    height: 6.25rem;
+    width: min(100%, 16rem);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    border-radius: 10px;
-    margin: 10px;
+    gap: 18px;
+    border-radius: 8px;
+    margin: 0;
+    padding: 16px 18px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(6px);
 
     img {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 2.75rem;
+        height: 2.75rem;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.46);
     }
 
     span {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        min-width: 0;
     }
 
     p:not(:first-of-type) {
-        font-size: 18px;
-        color: rgb(43, 43, 43);
+        margin-top: 4px;
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(30, 41, 59, 0.74);
     }
 
     p:first-of-type {
-        font-size: 26px;
+        font-size: 25px;
         font-weight: bold;
+        line-height: 1.05;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 1080px) {
+    .card_indicador {
+        flex: 1 1 13rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .card_indicador {
+        width: 100%;
     }
 }
