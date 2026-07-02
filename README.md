@@ -23,6 +23,14 @@ Nesta versão, o sistema mostra informações como:
 
 O objetivo deste protótipo é representar uma parte visual e funcional do projeto, integrando frontend, backend e banco de dados.
 
+## Integrantes
+
+- Eduardo de Carvalho Fernandez
+- João Pedro Cordasso Trento
+- Felipe Kenji Inomata Lamb
+- Ronei Herter
+- Luis Eduardo Lucas Da Silva
+
 ## Tecnologias Usadas
 
 ### Frontend
